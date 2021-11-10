@@ -4,14 +4,14 @@ const productSchema = mongoose.Schema(
     {
         name: {
             type: String,
-            // required: [true, "Please Enter product name"],
-            // trim: true
-            default: "product"
+            required: [true, "Please Enter product name"],
+            trim: true,
+            // default: "product"
         },
         price: {
             type: Number,
             default: 0,
-            // required: [true, "Please Enter product price"],
+            required: [true, "Please Enter product price"],
             maxLength: 8
         },
         description: {
@@ -20,7 +20,7 @@ const productSchema = mongoose.Schema(
         },
         category: {
             type: String,
-            // required: [true, "please enter category"],
+            required: [true, "please enter category"],
         },
 
         images: [

@@ -9,8 +9,9 @@ dotenv.config({path: "backend/config/conf.env"});
 const connectDatabase = require("./config/db");
 connectDatabase();
 
+
 //start server
 app.listen(process.env.PORT, ()=> {
-    console.log('server is working on ' + process.env.PORT);
+    console.log('server is running on http://localhost:' + process.env.PORT);
 
 })

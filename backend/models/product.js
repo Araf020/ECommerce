@@ -4,20 +4,26 @@ const productSchema = mongoose.Schema(
     {
         name: {
             type: String,
-            required: [true, "Please Enter product name"],
-            trim: true
+            // required: [true, "Please Enter product name"],
+            // trim: true
+            default: "product"
         },
         price: {
             type: Number,
-            required: [true, "Please Enter product price"],
+            default: 0,
+            // required: [true, "Please Enter product price"],
             maxLength: 8
         },
-        rating: {
-            type: Number,
-            default: 0
+        description: {
+            type: String,
+            // required: true
+        },
+        category: {
+            type: String,
+            // required: [true, "please enter category"],
         },
 
-        Images: [
+        images: [
             {
                 public_id: {
                     type: String,
@@ -30,13 +36,9 @@ const productSchema = mongoose.Schema(
             }
         ],
 
-        category: {
-            type: String,
-            required: [true, "please enter category"],
-        },
+        
         stock: {
             type: Number,
-            required: [true, "please enter stock number"],
             maxLength: 4,
             default: 1
         },
@@ -69,7 +71,11 @@ const productSchema = mongoose.Schema(
         createdAt: {
             type: Date,
             default: Date.now
-        }
+        },
+        rating: {
+            type: Number,
+            default: 0
+        },
 
 
     }

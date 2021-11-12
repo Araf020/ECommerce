@@ -2,6 +2,7 @@ const Product = require('../models/product');
 const {request, response} = require("express");
 const ErrorHandler = require("../Util/ErrorHandler");
 const  catchAsyncErrors = require('../middleware/catchAsyncerrors');
+const ApiFeature = require("../Util/apiFeature");
 
 
 // var express  = require('express');
@@ -29,7 +30,15 @@ exports.createProduct = catchAsyncErrors(async (request, response, next) => {
 //get All product
 exports.getAllProducts =  catchAsyncErrors(async (request, response, next) => {
 
-    const products = await Product.find();
+    //for search by name
+    //preparing query on condition
+    const keyword  = request.query.keyword ? {name:{
+        $regex: request.query.keyword,
+        $options: 'i'
+    }} : {};
+
+    //getting the products
+    const products = await Product.find(keyword);
 
     response.status(200).json({
         success: true,
